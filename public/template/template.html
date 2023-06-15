@@ -2,9 +2,240 @@
 <html>
 <head>
     <title>PDF Template</title>
+    <style>
+        @font-face {
+            font-family: 'Arial';
+            src: url('https://fonts.googleapis.com/css2?family=Arial&display=swap');
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .header img {
+            margin-right: 10px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+
+        .left-block {
+            width: 20%;
+        }
+
+        .right-block {
+            display: flex;
+            flex-direction: column;
+            margin-top: 50px;
+            justify-content: space-between;
+            width: 75%;
+        }
+
+        p {
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
-<h1>{{title}}</h1>
-<p>{{content}}</p>
+<div class="header">
+    <img src="{{imageData}}" alt="img">
+    <p>{{currentDate}}</p>
+</div>
+<div class="content">
+    <div class="left-block">
+        <div style="margin-bottom: 100px">
+            <p>Traccy AG</p>
+            <p>Chaltenbodenstr. 6a</p>
+            <p>8834 CH-Schindellegi</p>
+            <p>Feusisberg</p>
+            <hr>
+        </div>
+        <div style=" transform: rotate(-90deg);position: absolute;
+    left: -15px;">
+            <a href="https://www.traccy.io">www.traccy.io</a>
+        </div>
+
+    </div>
+    <div class="right-block">
+        <div style=" display: flex;
+            flex-direction: column;
+            align-items: center;">
+            <h3>PARTICIPATION PURCHASE AGREEMENT</h3>
+            <p>between</p>
+            <p>hereinafter referred to as "Seller"</p>
+            <p>Traccy Connect AG, Chaltenbodenstrasse 6a, 8834 Schindellegi (Feusisberg)</p>
+            <p>and</p>
+            <p>hereinafter "Buyer"</p>
+            <h4>Custumor {{firstName}}, {{surName}}, {{address}}, {{zipcode}}</h4>
+        </div>
+
+        <p>Traccy Connect AG is a public limited company registered in the Commercial Register of the Canton of Schwyz
+            with its registered office in Schindellegi (Feusisberg). It has a share capital of CHF 100'000.00, divided
+            into 100'000 registered shares with a nominal value of CHF 1.00 each.</p>
+        <br>
+        <p>The participation capital currently amounts to CHF 8'000.00 (eight thousand Swiss francs) and is divided into
+            800'000 bearer participation certificates with a par value of CHF 0.01 (one centime) each. The Board of
+            Directors is authorised to create further participation capital.</p>
+        <br>
+        <p>The participation certificates grant, in proportion to their nominal value, the same entitlement to the
+            corresponding share in the balance sheet profit and in the liquidation result as the registered shares.
+            However, they do not confer any voting rights or any rights associated with voting rights.</p>
+        <p>The purpose of the parties in purchasing participation certificates is to enable the purchaser to participate
+            in the profits of the company.</p>
+
+        <h4>I. Object of Purchase and Purchase Price </h4>
+        <p>A. Object of Purchase </p>
+        <br>
+        <p>The seller sells the buyer {{numberOfShares}} participation certificates of the company with a nominal value of CHF 0.25
+            each ("participation certificate"), i.e. 1% of the share capital. These are transferred to the buyer's
+            wallet in the form of a token immediately after the purchase.</p>
+        <br>
+        <p>B. Purchase price </p>
+        <br>
+        <p>The purchase price is CHF 0.25 per participation certificate for a total of CHF {{totalAmount}}. The registration of
+            the participation certificate purchased by the buyer in the share register will take place after the
+            transfer of the purchase price.</p>
+        <br>
+        <p>The purchase price will be paid as follows:</p>
+        <br>
+        <p>CHF {{totalAmount}}</p>
+        <br>
+        <br>
+        <br>
+        <p>After signing of this contract ("Signing") and simultaneous transfer of ownership of the participation
+            certificates ("Closing"), the purchase price is due. As agreed by the seller and the buyer, the purchase
+            price will be transferred to the following wallet: </p>
+        <br>
+        <p>Wallet Address: 0xCa7f7606853A7D70386B1C854a9A77Fc72195913</p>
+        <br>
+        <p>Network: ERC 20</p>
+        <br>
+        <h4>II. execution of the purchase contract</h4>
+        <p>A. Execution Date</p>
+        <br>
+        <p>This purchase agreement shall be executed step by step on {{currentDate}} at the Company's premises in accordance
+            with the following provisions by performing the execution acts. </p>
+        <br>
+        <p>B. Transfer of Benefit and Risk</p>
+        <br>
+        <p>Upon signature of the purchase contract, benefit and risk shall pass from the seller to the buyer.</p>
+        <br>
+        <h4>III. General Provisions</h4>
+        <p>A. Transaction Costs</p>
+        <br>
+        <p>Each party shall bear its own legal, advisory and transaction costs. There are no brokerage or similar
+            contracts in relation to the sale of the Company's shares and for the other transactions contemplated by
+            this Agreement.</p>
+        <br>
+        <p>B. Duties, Taxes</p>
+        <br>
+        <p>Any capital gains, income or other taxes and duties arising from the sale of the shares which are charged to
+            the seller shall be borne by the seller. Any sales tax owed shall be borne equally by the parties.</p>
+        <br>
+        <p>C. Final Agreement</p>
+        <br>
+        <p>This contract of sale, including the annexes thereto, constitutes the entire agreement with respect to its
+            subject matter and supersedes all prior written or oral agreements with respect thereto.
+            This Purchase Agreement, including this provision, may only be amended in writing.</p>
+        <br>
+        <p>D. No Forfeiture</p>
+        <br>
+        <p>The waiver by either party of any claim under this contract shall not be deemed to be a waiver of all claims
+            under this contract.</p>
+        <br>
+        <p>E. Mutual Communications</p>
+        <br>
+        <p>Any notices relating to this Purchase Agreement shall be delivered to the address set forth on the first page
+            of this Agreement.
+            The time at which the notice is sent by the sender shall be decisive for the observance of legal or
+            contractual deadlines.</p>
+        <br>
+        <p>F. Confidentiality/Information</p>
+        <br>
+        <p>The contents of this purchase contract as well as the contents of the preceding and subsequent negotiations
+            and the documents and information exchanged in this connection shall be treated confidentially by both
+            parties.
+        </p>
+        <br>
+        <p>G. Partial Invalidity</p>
+        <br>
+        <p>Should any provision of this purchase contract be or become void or ineffective, the remaining part of this
+            purchase contract shall not be affected thereby. In the event of the invalidity or ineffectiveness of a
+            clause, it shall be replaced by a clause which comes as close as possible to the economic purpose of the
+            invalid clause and which is effective. The same procedure shall be followed if a loophole becomes
+            apparent.</p>
+        <br>
+        <h4>IV. Applicable law/jurisdiction</h4>
+        <p>A. Applicable law</p>
+        <br>
+        <p>This contract of sale is subject to Swiss law.</p>
+        <br>
+        <p>B. Place of jurisdiction/arbitration clause</p>
+        <br>
+        <p>Any disputes arising out of or in connection with this contract of sale shall be subject to the exclusive
+            jurisdiction of the courts of Zurich.</p>
+    </div>
+</div>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<br><br><br><br><br>
+<div style="display:flex;justify-content: space-between;padding: 50px;align-items: center;margin-top: 80px">
+    <div style="width: 40%">
+        <p>Schindellegi,</p>
+        {{currentDate}}
+
+        <img src="{{imageSignature}}" alt="signature">
+        <hr>
+        <h5>Joas Fischer</h5>
+        <p>CEO Traccy AG</p>
+    </div>
+    <div style="width: 40%">
+        <br>
+        {{currentDate}}
+        <img src="{{clientSignature}}" alt="signature">
+        <hr>
+        <h5>{{firstName}} {{surName}}</h5>
+        <br>
+    </div>
+</div>
+
+<hr>
+<div style="display: flex;justify-content: space-between">
+    <div style="width: 200px;height: 50px">
+        <div style="display: flex">
+            <img style="width: 30px;height: 30px" src="{{imageAddress}}" alt="imageAddress">
+            <h4>Address</h4>
+        </div>
+        <p>Chaltenbodenstr. 6a
+            8834 CH-Schindellegi
+        </p>
+    </div>
+    <div style="height: 50px">
+        <img style="width: 30px;height: 30px" src="{{imageViber}}" alt="imageViber">
+        <p>+41 43 810 29 51</p>
+    </div>
+    <div style="height: 50px">
+        <img style="width: 30px;height: 30px" src="{{imageEmail}}" alt="imageEmail">
+        <p>info@traccy.ch</p>
+    </div>
+    <div style="height: 50px">
+        <img style="width: 30px;height: 30px" src="{{imageLogo}}" alt="imageLogo">
+    </div>
+</div>
 </body>
 </html>

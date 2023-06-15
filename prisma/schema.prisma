@@ -9,3 +9,50 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model TokenPair {
+  id           Int     @id @default(autoincrement())
+  accessToken  String
+  refreshToken String
+  author       User?   @relation(fields: [authorId], references: [id])
+  authorId     String? @unique
+}
+
+model User {
+  id          String      @id @default(uuid())
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  firstName   String?
+  surName     String?
+  email       String?     @unique
+  password    String?
+  gender      String?
+  address     String?
+  zipcode     String?
+  title       String?
+  interest    String?
+  tokenSumSub String?
+  TokenPair   TokenPair?
+  Agreement   Agreement[]
+}
+
+model Agreement {
+  id        String   @id @default(uuid())
+  file      String?
+  author    User?    @relation(fields: [authorId], references: [id])
+  authorId  String?
+  updatedAt DateTime @updatedAt
+  createdAt DateTime @default(now())
+}
+
+model Emails {
+  id        String   @id @default(uuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  firstName String?
+  surName   String?
+  email     String?  @unique
+  gender    String?
+  interest  String?
+  message   String?
+}
