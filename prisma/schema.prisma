@@ -51,7 +51,7 @@ model Emails {
   updatedAt DateTime @updatedAt
   firstName String?
   surName   String?
-  email     String?  @unique
+  email     String?
   gender    String?
   interest  String?
   message   String?
