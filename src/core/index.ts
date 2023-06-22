@@ -3,9 +3,9 @@ import { Provider } from '@nestjs/common';
 import * as process from "process";
 // Unique identifier of the service in the dependency injection layer
 export const DoSpacesServiceLib = 'lib:do-spaces-service';
-
+import {config} from 'dotenv';
+config();
 // Creation of the value that the provider will always be returning.
-// An actual AWS.S3 instance
 const spacesEndpoint = new AWS.Endpoint(process.env.DIGITAL_URL);
 
 const S3 = new AWS.S3({
