@@ -15,15 +15,15 @@ export class EmailsService {
 
     async sendMail(email: string, name: string) {
         const transporter = nodemailer.createTransport({
-            service: 'gmail',
+            service: "Outlook365",
             auth: {
-                user: 'traccy.ag@gmail.com', // Gmail email address
-                pass: 'xszsriicflnocxlf', // Gmail password or App Password
+                user: 'info@traccy.ch', // Gmail email address
+                pass: 'bscpzmcnclkbykzc', // Gmail password or App Password
             },
         });
 
         const mailOptions = {
-            from: 'traccy.ag@gmail.com',
+            from: 'info@traccy.ch',
             to: email,
             subject: 'Traccy AG: Thank you for your message',
             html: `
