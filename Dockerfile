@@ -18,7 +18,7 @@ COPY . .
 RUN npm ci
 
 # Build the API
-RUN npm run build myapp  # command to build an app in an NX monorepo; replace with your app build command
+RUN npm run build backend  # command to build an app in an NX monorepo; replace with your app build command
 
 # Your app binds to port 8080 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
 EXPOSE 8080
@@ -29,4 +29,4 @@ ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
 ENV PUPPETEER_ARGS='--no-sandbox'
 
 # Start command
-CMD [ "node", "dist/myapp/main.js" ]
+CMD [ "node", "dist/backend/main.js" ]
