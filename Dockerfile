@@ -1,20 +1,32 @@
-FROM node:14-alpine
+# Set the base image to Node 18
+FROM node:18
 
-RUN apk add --no-cache \
-      chromium \
-      ca-certificates
 
-# This is to prevent the build from getting stuck on "Taking snapshot of full filesystem"
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true 
+# Update the repository sources list
+RUN apt-get update && apt-get upgrade -y
 
-WORKDIR /usr/src/myapp
-COPY package.json yarn.lock ./
-RUN yarn
+# Install Chromium
+RUN apt-get install -y chromium
 
+# Set the working directory to /app
+WORKDIR /app
+
+# Bundle your app source inside the docker image
 COPY . .
 
-# Needed because we set PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-ENV SCULLY_PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium-browser
+# Install all the dependencies
+RUN npm ci
 
-# build_prod_scully is set in package.json to: "ng build --configuration=production && yarn scully --scanRoutes"
-RUN yarn build_prod_scully 
+# Build the API
+RUN npm run build myapp  # command to build an app in an NX monorepo; replace with your app build command
+
+# Your app binds to port 8080 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
+EXPOSE 8080
+
+# Set environment variable to disable Chromium's sandbox (this is required if you are running as root)
+ENV CHROME_BIN=/usr/bin/chromium-browser
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
+ENV PUPPETEER_ARGS='--no-sandbox'
+
+# Start command
+CMD [ "node", "dist/myapp/main.js" ]
