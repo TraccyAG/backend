@@ -60,7 +60,7 @@ export class DocumentsService {
         const browser = await puppeteer.launch({
             executablePath: chromium.path,
             headless: "new",
-            args: ['--no-sandbox']
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
 
         // Create a new page
