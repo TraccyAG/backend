@@ -56,7 +56,10 @@ export class DocumentsService {
         const html = compiledTemplate(variables);
 
         // Launch a headless browser instance
-        const browser = await puppeteer.launch({headless: 'new'});
+        const browser = await puppeteer.launch({
+            headless: "new",
+            args: ['--no-sandbox']
+        });
 
         // Create a new page
         const page = await browser.newPage();

@@ -64,6 +64,7 @@ export class TokenService {
     //delete token from BD
     async deleteTokenPair(id: string) {
         try {
+            console.log(id);
             if (!id) {
                 throw new HttpException("invalid id...", 401);
             }
