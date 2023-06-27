@@ -1,32 +1,63 @@
-# Set the base image to Node 18
-FROM node:18
+# Use an official Node.js LTS (Long Term Support) as the base image
+FROM node:lts
 
+# Install necessary dependencies
+RUN apt-get update && apt-get install -y \
+    gconf-service \
+    libasound2 \
+    libatk1.0-0 \
+    libc6 \
+    libcairo2 \
+    libcups2 \
+    libdbus-1-3 \
+    libexpat1 \
+    libfontconfig1 \
+    libgcc1 \
+    libgconf-2-4 \
+    libgdk-pixbuf2.0-0 \
+    libglib2.0-0 \
+    libgtk-3-0 \
+    libnspr4 \
+    libpango-1.0-0 \
+    libpangocairo-1.0-0 \
+    libstdc++6 \
+    libx11-6 \
+    libx11-xcb1 \
+    libxcb1 \
+    libxcomposite1 \
+    libxcursor1 \
+    libxdamage1 \
+    libxext6 \
+    libxfixes3 \
+    libxi6 \
+    libxrandr2 \
+    libxrender1 \
+    libxss1 \
+    libxtst6 \
+    ca-certificates \
+    fonts-liberation \
+    libappindicator1 \
+    libnss3 \
+    lsb-release \
+    xdg-utils
 
-# Update the repository sources list
-RUN apt-get update && apt-get upgrade -y
-
-# Install Chromium
-RUN apt-get install -y chromium
-
-# Set the working directory to /app
+# Set the working directory in the container
 WORKDIR /app
 
-# Bundle your app source inside the docker image
+# Copy package.json and package-lock.json to the working directory
+COPY package*.json ./
+
+# Install NestJS dependencies
+RUN npm install
+
+# Copy the entire NestJS project to the working directory
 COPY . .
 
-# Install all the dependencies
-RUN npm ci
+# Build the NestJS project
+RUN npm run build
 
-# Build the API
-RUN npm run build backend  # command to build an app in an NX monorepo; replace with your app build command
+# Expose the required port (if necessary)
+EXPOSE 3000
 
-# Your app binds to port 8080 so you'll use the EXPOSE instruction to have it mapped by the docker daemon
-EXPOSE 8080
-
-# Set environment variable to disable Chromium's sandbox (this is required if you are running as root)
-ENV CHROME_BIN=/usr/bin/chromium-browser
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD=true
-ENV PUPPETEER_ARGS='--no-sandbox'
-
-# Start command
-CMD [ "node", "dist/backend/main.js" ]
+# Set the command to run your NestJS application
+CMD ["npm", "run", "start:prod"]
