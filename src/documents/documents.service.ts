@@ -3,7 +3,6 @@ import * as fs from 'fs';
 import * as handlebars from 'handlebars';
 import * as path from 'path';
 import * as puppeteer from 'puppeteer';
-const chromium = require('chromium');
 
 @Injectable()
 export class DocumentsService {
@@ -58,7 +57,6 @@ export class DocumentsService {
 
         // Launch a headless browser instance
         const browser = await puppeteer.launch({
-            executablePath: chromium.path,
             headless: "new",
             args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
