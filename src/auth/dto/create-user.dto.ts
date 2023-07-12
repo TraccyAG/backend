@@ -10,6 +10,8 @@ export class CreateUserDto {
   @IsEmail()
   @IsNotEmpty()
   public email: string;
+  public title?: string;
+  public city?: string;
   public surName?: string;
   public gender?: string;
   public interest?: string;
