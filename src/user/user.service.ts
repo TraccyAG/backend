@@ -23,6 +23,11 @@ export class UserService {
         return this.prismaService.user.create({data: user});
     }
 
+    async deleteUser(data: any): Promise<User> {
+        const {email} = data
+        return this.prismaService.user.delete({where: {email:email}});
+    }
+
     async updateUser(emails: string, data: any) {
         return this.prismaService.user.update({where: {email: emails}, data})
     }
