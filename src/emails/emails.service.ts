@@ -1,32 +1,30 @@
-import {Injectable} from '@nestjs/common';
-import {PrismaService} from "../core/prisma.service";
-import {Emails} from "@prisma/client";
-import nodemailer from "nodemailer";
-
+import { Injectable } from '@nestjs/common';
+import { PrismaService } from '../core/prisma.service';
+import { Emails } from '@prisma/client';
+import nodemailer from 'nodemailer';
 
 @Injectable()
 export class EmailsService {
-    constructor(private readonly prisma: PrismaService) {
-    } // Inject the Prisma service
+  constructor(private readonly prisma: PrismaService) {} // Inject the Prisma service
 
-    async createEmail(data: Emails): Promise<Emails> {
-        return this.prisma.emails.create({data});
-    }
+  async createEmail(data: Emails): Promise<Emails> {
+    return this.prisma.emails.create({ data });
+  }
 
-    async sendMail(email: string, name: string) {
-        const transporter = nodemailer.createTransport({
-            service: "Outlook365",
-            auth: {
-                user: 'info@traccy.ch', // Gmail email address
-                pass: 'bscpzmcnclkbykzc', // Gmail password or App Password
-            },
-        });
+  async sendMail(email: string, name: string) {
+    const transporter = nodemailer.createTransport({
+      service: 'Outlook365',
+      auth: {
+        user: 'info@traccy.ch', // Gmail email address
+        pass: 'bscpzmcnclkbykzc', // Gmail password or App Password
+      },
+    });
 
-        const mailOptions = {
-            from: 'info@traccy.ch',
-            to: email,
-            subject: 'Traccy AG: Thank you for your message',
-            html: `
+    const mailOptions = {
+      from: 'info@traccy.ch',
+      to: email,
+      subject: 'Traccy AG: Thank you for your message',
+      html: `
 <h2>Hello ${name}</h2>
 <p>Thank you for your message. We are very pleased about your interest in our company.</p>
 <p>We will process your request and will get back to you within 24 hours.</p>
@@ -109,14 +107,14 @@ export class EmailsService {
   </tbody>
 </table>
       `,
-        };
+    };
 
-        transporter.sendMail(mailOptions, (error, info) => {
-            if (error) {
-                console.error('Error sending reset password email:', error);
-            } else {
-                console.log('Reset password email sent:', info.response);
-            }
-        });
-    }
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error('Error sending reset password email:', error);
+      } else {
+        console.log('Reset password email sent:', info.response);
+      }
+    });
+  }
 }
