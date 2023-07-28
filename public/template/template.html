@@ -10,231 +10,487 @@
 
         body {
             font-family: Arial, sans-serif;
-            padding: 20px;
+            padding: 40px;
         }
 
         .header {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 40px;
+            row-gap: 30px;
+            margin-bottom: 100px;
         }
 
-        .header img {
-            margin-right: 10px;
+        .bold_text {
+            font-weight: bold;
         }
+
+        .cursive_text {
+            font-style: italic;
+        }
+
+        .header > div {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            row-gap: 10px;
+        }
+
+        .credentials {
+            border: 1px solid black;
+            padding: 10px 5px;
+            font-weight: normal;
+        }
+
 
         .content {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            width: 100%;
+            align-content: center;
+            justify-content: center;
             margin-bottom: 40px;
-        }
-
-        .left-block {
-            width: 20%;
         }
 
         .right-block {
             display: flex;
             flex-direction: column;
-            margin-top: 50px;
+            /*margin-top: 50px;*/
             justify-content: space-between;
-            width: 75%;
+            width: 80%;
+            padding: 20px;
+        }
+
+        ul {
+            margin-bottom: 50px;
+        }
+
+        li {
+            margin-top: 20px;
+            font-size: 14px;
+            line-height: 20px;
+            width: 100%;
+            text-align: justify;
         }
 
         p {
             margin: 0;
+            font-size: 16px;
+            line-height: 20px;
         }
     </style>
 </head>
 <body>
-<div class="header">
-    <img src="{{imageData}}" alt="img">
-    <p>{{currentDate}}</p>
-</div>
 <div class="content">
-    <div class="left-block">
-        <div style="margin-bottom: 100px">
-            <p>Traccy AG</p>
-            <p>Chaltenbodenstr. 6a</p>
-            <p>8834 CH-Schindellegi</p>
-            <p>Feusisberg</p>
-            <hr>
-        </div>
-        <div style=" transform: rotate(-90deg);position: absolute;
-    left: -15px;">
-            <a href="https://www.traccy.io">www.traccy.io</a>
-        </div>
-
-    </div>
     <div class="right-block">
-        <div style=" display: flex;
-            flex-direction: column;
-            align-items: center;">
-            <h3>PARTICIPATION PURCHASE AGREEMENT</h3>
+        <div class="header">
+            <h4>PARTICIPATION CERTIFICATES PURCHASE AGREEMENT</h4>
+            <p><span class="bold_text">('Purchase Agreement')</span></p>
             <p>between</p>
-            <p>hereinafter referred to as "Seller"</p>
-            <p>Traccy Connect AG, Chaltenbodenstrasse 6a, 8834 Schindellegi (Feusisberg)</p>
-            <p>and</p>
-            <p>hereinafter "Buyer"</p>
-            <h4>Custumor {{firstName}}, {{surName}}, {{address}}, {{zipcode}}</h4>
+            <p style="text-align: center">
+                <span class="bold_text">Traccy Connect AG</span>, Chaltenbodenstrasse 6a, 8834 Schindellegi
+                (Feusisberg), Switzerland, hereinafter referred to as <span
+                    class="bold_text">"Seller" or "Company"</span>,
+            </p>
+            <p><span class="bold_text">and</span></p>
+            <p>
+                <span class="bold_text" style="margin-right: 12px">Customer</span>
+                <span class="credentials">{{firstName}}, {{surName}}, {{address}}, {{city}}, {{zipcode}}</span>
+            </p>
+            <div>
+                <p>hereinafter referred to as <span class="bold_text">"Buyer"</span></p>
+                <p>Seller and Buyer hereinafter referred to as <span class="bold_text">"Parties"</span>, each a <span
+                        class="bold_text">"Party"</span></p>
+            </div>
         </div>
+        <p class="bold_text">Preamble</p>
+        <ul>
+            <li>Traccy Connect AG is a public limited company (<span class="cursive_text">Aktiengesellschaft</span>),
+                incorporated and organized under the
+                laws of Switzerland, with registered office in Schindellegi (Feusisberg), Switzerland, whose share
+                capital in the Commercial Register of the Canton of Schwyz amounts to CHF 100'000 and is divided into
+                100'000 registered shares with a nominal value of CHF 1.00 each.
+            </li>
+            <li>Its additional participation capital currently amounts to CHF 8'000.00 (eight thousand Swiss francs) and
+                is divided into 800'000 bearer participation certificates (<span class="bold_text">"TRCYN Token"</span>)
+                with a nominal value of CHF
+                0.01 (one Swiss centime) each. The Board of Directors of the Seller is authorised to create further
+                participation capital.
+            </li>
+            <li>The Participation Certificates grant, in proportion to their nominal value, the same entitlement to the
+                corresponding share in the balance sheet profit and in the liquidation result as the registered shares.
+                However, they do not confer any voting rights or any rights associated with voting rights.
+            </li>
+            <li>The Participation Certificates are structured as uncertificated securities (<span class="cursive_text">Wertrechte</span>)
+                within the
+                meaning of the Swiss Code of Obligations and as intermediated securities (<span class="cursive_text">Bucheffekten</span>)
+                within the
+                meaning of the Swiss Federal Act on Intermediated Securities (<span class="cursive_text">Bucheffektengesetz;</span>
+                BEG) and are deposited
+                with a depository in Switzerland designated by the Seller. Holders of Participation Certificates are not
+                entitled to the printing and delivery of physical certificates. More so, the Participation Certificates
+                are issued exclusively in the form of a security token.
+            </li>
+            <li>Subject to the terms and conditions of this Agreement, the Buyer intends to acquire Participation
+                Certificates held by the Seller to enable the Buyer to participate in future profits of the Seller.
+            </li>
+        </ul>
 
-        <p>Traccy Connect AG is a public limited company registered in the Commercial Register of the Canton of Schwyz
-            with its registered office in Schindellegi (Feusisberg). It has a share capital of CHF 100'000.00, divided
-            into 100'000 registered shares with a nominal value of CHF 1.00 each.</p>
+        <p><span class="bold_text">Now, therefore</span>, the Parties hereto agree as follows:</p>
         <br>
-        <p>The participation capital currently amounts to CHF 8'000.00 (eight thousand Swiss francs) and is divided into
-            800'000 bearer participation certificates with a par value of CHF 0.01 (one centime) each. The Board of
-            Directors is authorised to create further participation capital.</p>
         <br>
-        <p>The participation certificates grant, in proportion to their nominal value, the same entitlement to the
-            corresponding share in the balance sheet profit and in the liquidation result as the registered shares.
-            However, they do not confer any voting rights or any rights associated with voting rights.</p>
-        <p>The purpose of the parties in purchasing participation certificates is to enable the purchaser to participate
-            in the profits of the company.</p>
-
         <h4>I. Object of Purchase and Purchase Price </h4>
-        <p>A. Object of Purchase </p>
+        <p>A. <span class="bold_text">( Object of Purchase )</span></p>
         <br>
-        <p>The seller sells the buyer {{numberOfShares}} participation certificates of the company with a nominal value of CHF 0.25
-            each ("participation certificate"), i.e. 1% of the share capital. These are transferred to the buyer's
-            wallet in the form of a token immediately after the purchase.</p>
+        <p>With effect as of <span class="bold_text">{{currentDate}}</span>, the Seller shall sell, transfer and deliver
+            to the Buyer and the Buyer
+            commits to
+            acquire from the Seller <span class="bold_text">{{totalAmount}}</span> Participation Certificates issued by
+            the Seller, with a nominal
+            value of CHF 0.01 each. The Participation Certificates will be transferred to the Buyer's wallet in the form
+            of a security token immediately after the Signing (as defined below).
+        </p>
+        <br>
         <br>
         <p>B. Purchase price </p>
         <br>
-        <p>The purchase price is CHF 0.25 per participation certificate for a total of CHF {{totalAmount}}. The registration of
-            the participation certificate purchased by the buyer in the share register will take place after the
-            transfer of the purchase price.</p>
+        <p>
+            The purchase price is CHF 0.25 per Participation Certificate, and the aggregate purchase price amounts to a
+            total of <span class="bold_text">{{totalAmount}}</span>.
+        </p>
+        <br>
+        <p>The deposit of the Participation Certificates purchased by the Buyer with the Swiss depository will take
+            place after the Buyer having transferred the Total Purchase Price.</p>
         <br>
         <p>The purchase price will be paid as follows:</p>
         <br>
-        <p>CHF {{totalAmount}}</p>
+        <div class="credentials">
+            <div><span class="bold_text">{{totalAmount}}</span></div>
+            <br>
+            <p>After signing of this Purchase Agreement <span class="bold_text">("Signing")</span> and immediately
+                afterwards transferring the
+                ownership of the Participation Certificates on the Transfer Date, the Total Purchase Price will be due.
+                The Buyer shall transfer the Total Purchase Price to the following wallet:
+            </p>
+            <br>
+            <p>Traccy CONNECT Wallet Address:</p>
+            <br>
+            <p><span class="bold_text">0xCa7f7606853A7D70386B1C854a9A77Fc72195913</span></p>
+            <br>
+            <p>Network:</p>
+            <br>
+            <p><span class="bold_text">ERC 20</span></p>
+            <br>
+            <br>
+            <p>OR</p>
+            <br>
+            <br>
+            <p>Traccy CONNECT bank account:</p>
+            <br>
+            <p>Kontoinhaber: <span
+                    class="bold_text">Traccy AG, Chaltenbodenstrasse 6a, 8834 Schindellegi (Feusisberg)</span></p>
+            <p>Kontoinhaber: <span class="bold_text">CH82 0630 0506 2499 0368 8</span></p>
+        </div>
         <br>
         <br>
         <br>
-        <p>After signing of this contract ("Signing") and simultaneous transfer of ownership of the participation
-            certificates ("Closing"), the purchase price is due. As agreed by the seller and the buyer, the purchase
-            price will be transferred to the following wallet: </p>
-        <br>
-        <p>Wallet Address: 0xCa7f7606853A7D70386B1C854a9A77Fc72195913</p>
-        <br>
-        <p>Network: ERC 20</p>
-        <br>
-        <h4>II. execution of the purchase contract</h4>
-        <p>A. Execution Date</p>
-        <br>
-        <p>This purchase agreement shall be executed step by step on {{currentDate}} at the Company's premises in accordance
-            with the following provisions by performing the execution acts. </p>
-        <br>
-        <p>B. Transfer of Benefit and Risk</p>
-        <br>
-        <p>Upon signature of the purchase contract, benefit and risk shall pass from the seller to the buyer.</p>
-        <br>
-        <h4>III. General Provisions</h4>
-        <p>A. Transaction Costs</p>
-        <br>
-        <p>Each party shall bear its own legal, advisory and transaction costs. There are no brokerage or similar
-            contracts in relation to the sale of the Company's shares and for the other transactions contemplated by
-            this Agreement.</p>
-        <br>
-        <p>B. Duties, Taxes</p>
-        <br>
-        <p>Any capital gains, income or other taxes and duties arising from the sale of the shares which are charged to
-            the seller shall be borne by the seller. Any sales tax owed shall be borne equally by the parties.</p>
-        <br>
-        <p>C. Final Agreement</p>
-        <br>
-        <p>This contract of sale, including the annexes thereto, constitutes the entire agreement with respect to its
-            subject matter and supersedes all prior written or oral agreements with respect thereto.
-            This Purchase Agreement, including this provision, may only be amended in writing.</p>
-        <br>
-        <p>D. No Forfeiture</p>
-        <br>
-        <p>The waiver by either party of any claim under this contract shall not be deemed to be a waiver of all claims
-            under this contract.</p>
-        <br>
-        <p>E. Mutual Communications</p>
-        <br>
-        <p>Any notices relating to this Purchase Agreement shall be delivered to the address set forth on the first page
-            of this Agreement.
-            The time at which the notice is sent by the sender shall be decisive for the observance of legal or
-            contractual deadlines.</p>
-        <br>
-        <p>F. Confidentiality/Information</p>
-        <br>
-        <p>The contents of this purchase contract as well as the contents of the preceding and subsequent negotiations
-            and the documents and information exchanged in this connection shall be treated confidentially by both
-            parties.
-        </p>
-        <br>
-        <p>G. Partial Invalidity</p>
-        <br>
-        <p>Should any provision of this purchase contract be or become void or ineffective, the remaining part of this
-            purchase contract shall not be affected thereby. In the event of the invalidity or ineffectiveness of a
-            clause, it shall be replaced by a clause which comes as close as possible to the economic purpose of the
-            invalid clause and which is effective. The same procedure shall be followed if a loophole becomes
-            apparent.</p>
-        <br>
-        <h4>IV. Applicable law/jurisdiction</h4>
-        <p>A. Applicable law</p>
-        <br>
-        <p>This contract of sale is subject to Swiss law.</p>
-        <br>
-        <p>B. Place of jurisdiction/arbitration clause</p>
-        <br>
-        <p>Any disputes arising out of or in connection with this contract of sale shall be subject to the exclusive
-            jurisdiction of the courts of Zurich.</p>
+
+        <h4>II. Representation and Warranties of the Seller</h4>
+        <p>The Seller herby represents and warrants to the Buyer, as of the date of this Purchase Agreement, as
+            follows:</p>
+        <ol type="a">
+            <li>
+                <span class="cursive_text">Authorization</span> - The Company is duly organized and validly existing in
+                good standing under the laws of
+                its jurisdictions of organization. The Seller has the requisite power and authority to enter into,
+                execute and deliver this Purchase Agreement and to perform all of the obligations to be performed by it
+                hereunder. This Purchase Agreement and the transaction contemplated hereby have been duly authorized,
+                executed and delivered by the Seller’s competent corporate body and this Purchase Agreement constitutes
+                at Signing and on the Transfer Date the valid and binding obligation of the Seller, enforceable against
+                it in accordance withs its respective terms, subject to applicable laws
+            </li>
+            <li>
+                <span class="cursive_text">Title of Interest</span> - The Seller owns all right, title, interest (legal
+                and beneficial) and is the sole
+                owner of the Participation Certificates as of the Signing and Transfer Date of this Purchase Agreement
+                to be transferred to the Buyer, free and clear of all liens. No debit or credit loans between the
+                Company and third parties exist.
+            </li>
+            <li>
+                <span class="cursive_text">No Conflicts</span> - The execution and delivery of this Purchase Agreement
+                will, to the best of the Seller’s knowledge and belief, not conflict with, result in the breach of,
+                constitute a default under or violation of: (i) any law, rule or regulation of any government or
+                governmental regulatory agency, (ii) any judgment, order, writ, decree, permit or license of any court
+                or governmental or regulatory agency to which the Seller may be subject; (iii) any contract, agreement,
+                commitment or instrument to which the Seller is a party; or (iv) the Seller’s constitutional documents
+                or other governing instruments. The execution and delivery of this Purchase Agreement by the Seller and
+                the performance and consummation of the transaction contemplated hereby do not require any registration,
+                filing, qualification, consent or approval under law, rule regulation, judgment, order, writ, decree,
+                permit or license to which the Sellers may be subject.
+
+            </li>
+            <li>
+                <span class="cursive_text">No Litigation</span> - There is no action, suit, claim,
+                proceeding, arbitration, governmental inquiry or investigation pending or, to the Seller’s knowledge,
+                threatened against the Seller at law, before any court, tribunal arbitrator or governmental or
+                regulatory department, which would question the validity of, or prevent the consummation of, the
+                transaction contemplated by this Purchase Agreement or materially and adversely affect the Participation
+                Certificates being transferred by the Seller pursuant to this Purchase Agreement.
+
+            </li>
+        </ol>
+
+        <h4>III. REPRESENTATIONS AND WARRANTIES OF THE BUYER</h4>
+        <p>The Buyer hereby represents and warrants to the Seller, as of the date of this Purchase Agreement as
+            follows:</p>
+        <ol type="a">
+            <li>
+                <span class="cursive_text">Authorization</span> - The Buyer has the requisite power and
+                authority to enter into, execute and deliver this Purchase Agreement and to perform all of the
+                obligations to be performed by it hereunder. This Purchase Agreement and the transaction contemplated
+                hereby have been duly authorized, executed and delivered by the Buyer (or, in case the Buyer is a
+                corporate structure, by its competent corporate bodies) and this Purchase Agreement constitutes at
+                Signing and on the Transfer Date the valid and binding obligation of the Buyer enforceable against it in
+                accordance withs its respective terms, subject to applicable laws
+            </li>
+            <li>
+                <span class="cursive_text">No Conflicts</span> - The execution and delivery of this
+                Purchase Agreement will, to the best of the Buyer’s knowledge and belief, not conflict with, result in
+                the breach of, constitute a default under or violation of: (i) any law, rule or regulation of any
+                government or governmental regulatory agency, (ii) any judgment, order, writ, decree, permit or license
+                of any court or governmental or regulatory agency to which the Buyer may be subject; (iii) any contract,
+                agreement, commitment or instrument to which the Buyer is a party; or (iv) the Buyer’s constitutional
+                documents or other governing instruments. The execution and delivery of this Purchase Agreement by the
+                Buyer and the performance and consummation of the transaction contemplated hereby do not require any
+                registration, filing, qualification, consent or approval under law, rule regulation, judgment, order,
+                writ, decree, permit or license to which the Seller may be subject.
+            </li>
+            <li>
+                <span class="cursive_text">No Litigation</span> - There is no action, suit, claim,
+                proceeding, arbitration, governmental inquiry or investigation pending or, to the Buyer’s knowledge,
+                threatened against the Buyer at law, before any court, tribunal arbitrator or governmental or regulatory
+                department, which would question the validity of, or prevent the consummation of, the transaction
+                contemplated by this Purchase Agreement or materially and adversely affect the Participation
+                Certificates being transferred by the Seller pursuant to this Share Purchase Agreement.
+
+            </li>
+        </ol>
+
+        <h4>IV. COVENANTS</h4>
+        <ol type="a">
+            <li>
+                <span class="cursive_text">Cooperation</span> - The Buyer, on the one hand, and the Seller,
+                on the other hand, shall cooperate fully with each other in furnishing any information or performing any
+                action reasonably requested by the respective other Party, which information or action is necessary to
+                the timely and successful consummation of the transactions contemplated by this Purchase Agreement.
+            </li>
+            <li>
+                <span class="cursive_text">Tax Matters</span> - The Parties assume that the sale of
+                Participation Certificates governed by this Purchase Agreement will be deemed to be the Seller's own
+                issue (<span class="cursive_text">Eigenemission</span>) and will therefore not give rise to any tax
+                consequences.
+            </li>
+        </ol>
+
+        <h4>V. CONDITIONS TO OBLIGATIONS OF THE SELLER</h4>
+        <p>The obligations of the Seller to consummate the transactions contemplated by this Purchase Agreement as at
+            the Transfer Date of the Participation Certificates are, at the option of the Seller, subject to each of the
+            following conditions, and the Buyer shall use all reasonable efforts to cause each such condition to be
+            timely satisfied:</p>
+        <ol type="a">
+            <li>
+                <span class="cursive_text">Representations and Warranties</span> - The representations and
+                warranties of the Buyer contained in this Purchase Agreement shall be true and accurate in all material
+                respects as of the date when made and at and as of the applicable Transfer Date of the Participation
+                Certificates as though such representations and warranties were made at and as of the applicable
+                Transfer Date, unless they refer to a specific date, in which case they shall be true and accurate in
+                all material respects at and as of such specific date.
+            </li>
+            <li>
+                <span class="cursive_text">Performance</span> - The Buyer shall have performed in all
+                material respects all agreements and obligations and complied with all conditions required by this
+                Purchase Agreement to be performed or complied with by the Buyer at or prior to the applicable Transfer
+                Date
+            </li>
+            <li>
+                <span class="cursive_text">No Legal Proceedings</span> - No statute, law, rule,
+                regulation, judgment or order of any nature issued by a court of competent jurisdiction or governmental
+                authority restraining, prohibiting or affecting the consummation of the transactions contemplated by
+                this Purchase Agreement shall be in effect, and no claim, suit, action, investigation, inquiry or other
+                proceeding by any government body or other person shall be pending or threatened which questions the
+                validity or legality of the transactions contemplated by this Purchase Agreement.
+
+            </li>
+            <li>
+                <span class="cursive_text">Approvals</span> - All Approvals required to permit
+                the transfer of the Participation Certificates to the Buyer at the Transfer Date shall have been
+                obtained and any other consents and approvals required to be obtained from any court, governmental
+                agency, creditor or any other person for the execution, delivery and performance of this Purchase
+                Agreement and the transactions contemplated hereby with respect to the Participation Certificates shall
+                have been obtained.
+
+            </li>
+        </ol>
+
+
+        <h4>VI. CONDITIONS TO OBLIGATIONS OF THE BUYER</h4>
+        <p>The obligations of the Buyer to consummate the transactions contemplated by this Purchase Agreement as at the
+            Transfer Date are, at the option of the Buyer, subject to each of the following condition</p>
+        <ol type="a">
+            <li>
+                <span class="cursive_text">Representations and Warranties</span> The
+                representations and warranties of the Seller contained in this Purchase Agreement shall be true and
+                accurate in all material respects as of the date when made and at and as of the applicable Transfer Date
+                as though such representations and warranties were made at and as of the applicable Transfer Date,
+                unless they refer to a specific date, in which case they shall be true and accurate in all material
+                respects at and as of such specific date.
+            </li>
+            <li>
+                <span class="cursive_text">Performance</span> - The Seller shall have performed in all material respects
+                all agreements and obligations and complied with all conditions required by this Purchase Agreement to
+                be performed or complied with by the Seller at or prior to the applicable Transfer Date.
+            </li>
+            <li>
+                <span class="cursive_text">No Legal Proceedings</span> - No statute, law, rule, regulation, judgment or
+                order of any nature issued by a court of competent jurisdiction or governmental authority restraining,
+                prohibiting or affecting the transactions contemplated by this Purchase Agreement shall be in effect,
+                and no claim, suit, action, investigation, inquiry or other proceeding by any governmental body or other
+                person shall be pending or threatened which questions the validity or legality of the transactions
+                contemplated by this Purchase Agreement.
+
+            </li>
+            <li>
+                <span class="cursive_text">Approvals</span> - All Approvals required to permit the transfer of the
+                Participation Certificates to the Buyer at the Transfer Date shall have been obtained and any other
+                consents and approvals required to be obtained by the Seller from any court, governmental agency,
+                creditor or any other person for the execution, delivery and performance of this Purchase Agreement and
+                the transactions contemplated hereby shall have been obtained.
+            </li>
+        </ol>
+
+        <h4>VI. CONDITIONS TO OBLIGATIONS OF THE BUYER</h4>
+        <div style="display: flex; flex-direction: column; row-gap: 14px">
+            <p>A. Execution Date</p>
+            <p>This Purchase Agreement shall be executed by mutual signing by the Parties on the date reported on the
+                signature page.
+            </p>
+            <p>B. Transfer of Benefit and Risk</p>
+            <p>Upon signature of the Purchase Agreement, benefit and risk shall pass from the Seller to the Buyer.</p>
+        </div>
+
+
+        <h4>VIII. General Provisions</h4>
+        <div style="display: flex; flex-direction: column; row-gap: 14px">
+            <p>A. Transaction and Other Costs</p>
+            <p>Each Party shall bear its own legal, advisory and transaction costs. There are no brokerage or similar
+                contracts in place in relation to the sale of the Participation Certificates and for any other
+                transactions contemplated by this Agreement
+            </p>
+            <p>B. Buyback Option</p>
+            <p>The Buyer grants the Seller buyback option for the Participation Certificates with cut of date on
+                December 31, 2025. If Traccy Connect AG would like to buy back the Participation Certificates by or
+                before December 31, 2025, the buyback price shall correspond to the current fair value of the
+                Participation Certificates at the time of the exercise of the buyback option, as determined by an
+                independent auditor. The minimum buyback price is CHF 0.25 per Participation Certificate.
+            </p>
+            <p>C. Entire Agreement / Variations</p>
+            <p>This Purchase Agreement constitutes the whole and entire agreement between the Parties relating to the
+                subject matter hereof and supersedes any prior oral or written agreement between the Parties on the same
+                subject matter
+            </p>
+            <p>This Purchase Agreement, including this provision, may only be amended in writing.</p>
+            <p>D. No Waiver</p>
+            <p>The failure to exercise or delay in exercising a right or remedy under this Purchase Agreement shall not
+                constitute a waiver of the right or remedy or a waiver of any other rights or remedies and no single or
+                partial exercise of any right or remedy under this Purchase Agreement shall prevent any further exercise
+                of the right or remedy or the exercise of any other right or remedy.
+            </p>
+            <p>E. Notification</p>
+            <p>Any notices relating to this Purchase Agreement shall be delivered with respect to either Party to the
+                address set forth on the first page of this Agreement.
+                <br>
+                For the observance of legal or contractual deadlines, the time at which the notice has been sent in a
+                verifiable manner by the sender is decisive.
+            </p>
+            <p>F. Confidentiality</p>
+            <ol type="a">
+                <li>All information furnished in writing by either Party to this Purchase Agreement to the other Party
+                    to this Purchase Agreement in connection with this Purchase Agreement and the transactions
+                    contemplated by it shall be kept confidential by the receiving Party and shall be used by the
+                    receiving Party only in connection with this Purchase Agreement and the transactions contemplated
+                    hereby, except with the specific prior written consent of the disclosing Party and except to the
+                    extent that such information (i) is information which the receiving Party can demonstrate was
+                    already known to the receiving Party when received, (ii) at the time of disclosure or thereafter
+                    becomes lawfully obtainable from other sources through no act or failure to act on the part of the
+                    receiving Party, (iii) is required to be disclosed in any document to be filed with any competent
+                    federal, cantonal, municipal or other governmental authority, or in connection with any litigation;
+                    (iv) is disclosed in order to give the notices to obtain any prior regulatory approval, (v) is
+                    disclosed in connection with any consultation with attorneys, accountants, employees, or other
+                    advisors retained in connection with the transactions contemplated hereby under an obligation to
+                    keep such information confidential, (vi) is required to be disclosed by court order or otherwise
+                    mandated by law, provided that the receiving Party shall disclose only so much of the confidential
+                    information as is legally required, (vii) in connection with any regulation or disclosure
+                    obligations of securities laws, a securities exchange, a securities market or a self-regulatory
+                    agency (including any financial reporting obligations and filing of financial statements related
+                    thereto) of the Seller, the Buyer or any affiliate of either. The Parties shall use their respective
+                    best efforts and establish reasonable precautions to ensure that their principals, agents and
+                    employees abide by the terms of this Confidentiality Section.
+                </li>
+                <li>Without the prior consent of the Buyer, the Seller will not, and without the prior written consent
+                    of the Seller, the Buyer will not, disclose the terms of this Purchase Agreement (including, without
+                    limitation, the purchase price) or the transactions contemplated hereunder, or the identity of the
+                    Parties hereto, to any person, provided that such disclosure may be made to a Party’s officers,
+                    directors, partners, beneficial owners, affiliates, advisors and employees who require such
+                    information for the purpose of consummating the transactions contemplated by this Purchase
+                    Agreement. G. Severability
+                </li>
+            </ol>
+            <p>If any term, provision, agreement, covenant or restriction of this Purchase Agreement is held by a court
+                of competent jurisdiction or other authority to be invalid, void, or unenforceable, the remainder of the
+                terms, provisions, agreements, covenants and restrictions of this Purchase Agreement shall remain in
+                full force and effect and shall in no way be affected, impaired, or invalidated so long as the economic
+                or legal substance of the transactions contemplated hereby is not affected in any manner materially
+                adverse to any Party hereto. Upon such a determination, the Parties shall negotiate in good faith to
+                modify this Purchase Agreement so as to effect the original intent of the Parties as closely as possible
+                in a reasonably acceptable manner in order that the transactions contemplated hereby may be consummated
+                as originally contemplated to the fullest extent possible.
+            </p>
+        </div>
+        <h4>IX. Applicable Law/Jurisdiction</h4>
+        <div style="display: flex; flex-direction: column; row-gap: 14px">
+            <p>A. Applicable Law</p>
+            <p>This Purchase Agreement, and all non-contractual or other obligations arising out of or in connection
+                with it, shall be governed by and construed in accordance with the law of Switzerland without giving
+                effect to its principles or rules of conflict of laws to the extent such principles or rules would
+                permit or require the application of the laws of another jurisdiction.
+            </p>
+            <p>B. Place of Jurisdiction</p>
+            <p>For all disputes in connection with this Purchase Agreement, the competent courts of the Canton of Schwyz
+                shall have exclusive jurisdiction, unless a different statutory place of jurisdiction is mandatory.
+            </p>
+        </div>
+
     </div>
 </div>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
-<br><br><br><br><br>
+<br><br>
 <div style="display:flex;justify-content: space-between;padding: 50px;align-items: center;margin-top: 80px">
     <div style="width: 40%">
         <p>Schindellegi,</p>
         {{currentDate}}
 
         <img src="{{imageSignature}}" alt="signature">
-        <hr>
-        <h5>Joas Fischer</h5>
-        <p>CEO Traccy AG</p>
+        <div style="width: 100%;border-top-style: dashed"></div>
+        <br>
+        <p>Seller: Traccy Connect AG </p>
     </div>
     <div style="width: 40%">
         <br>
-        {{currentDate}}
+        {{city}}, {{currentDate}}
         <img src="{{clientSignature}}" alt="signature">
-        <hr>
-        <h5>{{firstName}} {{surName}}</h5>
+        <div style="width: 100%;border-top-style: dashed"></div>
         <br>
-    </div>
-</div>
-
-<hr>
-<div style="display: flex;justify-content: space-between">
-    <div style="width: 200px;height: 50px">
-        <div style="display: flex">
-            <img style="width: 30px;height: 30px" src="{{imageAddress}}" alt="imageAddress">
-            <h4>Address</h4>
-        </div>
-        <p>Chaltenbodenstr. 6a
-            8834 CH-Schindellegi
-        </p>
-    </div>
-    <div style="height: 50px">
-        <img style="width: 30px;height: 30px" src="{{imageViber}}" alt="imageViber">
-        <p>+41 43 810 29 51</p>
-    </div>
-    <div style="height: 50px">
-        <img style="width: 30px;height: 30px" src="{{imageEmail}}" alt="imageEmail">
-        <p>info@traccy.ch</p>
-    </div>
-    <div style="height: 50px">
-        <img style="width: 30px;height: 30px" src="{{imageLogo}}" alt="imageLogo">
+        <p>Buyer: {{firstName}} {{surName}}</p>
+        <br>
     </div>
 </div>
 </body>

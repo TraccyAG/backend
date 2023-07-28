@@ -19,6 +19,7 @@ export class DocumentsService {
       zipcode,
       numberOfShares,
       totalAmount,
+      city,
     } = data;
     // First-Name, Name, address, zip code
 
@@ -67,6 +68,7 @@ export class DocumentsService {
       firstName: firstName,
       surName: surName,
       address: address,
+      city: city,
       zipcode: zipcode,
       numberOfShares: numberOfShares,
       totalAmount: totalAmount,
