@@ -38,6 +38,11 @@
         }
 
         .credentials {
+            padding: 10px 5px;
+            font-weight: normal;
+        }
+
+        .totalAmount {
             border: 1px solid black;
             padding: 10px 5px;
             font-weight: normal;
@@ -112,9 +117,9 @@
                 100'000 registered shares with a nominal value of CHF 1.00 each.
             </li>
             <li>Its additional participation capital currently amounts to CHF 8'000.00 (eight thousand Swiss francs) and
-                is divided into 800'000 bearer participation certificates (<span class="bold_text">"TRCYN Token"</span>)
-                with a nominal value of CHF
-                0.01 (one Swiss centime) each. The Board of Directors of the Seller is authorised to create further
+                is divided into 800'000 bearer participation certificates ( {{totalAmount}} )
+                with a nominal value of CHF 0.01 (one Swiss centime) each. The Board of Directors of the Seller is
+                authorised to create further
                 participation capital.
             </li>
             <li>The Participation Certificates grant, in proportion to their nominal value, the same entitlement to the
@@ -142,11 +147,10 @@
         <h4>I. Object of Purchase and Purchase Price </h4>
         <p>A. <span class="bold_text">( Object of Purchase )</span></p>
         <br>
-        <p>With effect as of <span class="bold_text">{{currentDate}}</span>, the Seller shall sell, transfer and deliver
+        <p>With effect as of {{currentDate}}, the Seller shall sell, transfer and deliver
             to the Buyer and the Buyer
             commits to
-            acquire from the Seller <span class="bold_text">{{totalAmount}}</span> Participation Certificates issued by
-            the Seller, with a nominal
+            acquire from the Seller {{totalAmount}}. Participation Certificates issued by the Seller, with a nominal
             value of CHF 0.01 each. The Participation Certificates will be transferred to the Buyer's wallet in the form
             of a security token immediately after the Signing (as defined below).
         </p>
@@ -156,7 +160,7 @@
         <br>
         <p>
             The purchase price is CHF 0.25 per Participation Certificate, and the aggregate purchase price amounts to a
-            total of <span class="bold_text">{{totalAmount}}</span>.
+            total of USD {{totalAmount}}.
         </p>
         <br>
         <p>The deposit of the Participation Certificates purchased by the Buyer with the Swiss depository will take
@@ -164,11 +168,10 @@
         <br>
         <p>The purchase price will be paid as follows:</p>
         <br>
-        <div class="credentials">
-            <div><span class="bold_text">{{totalAmount}}</span></div>
+        <div class="totalAmount">
+            <div><span class="bold_text">USD {{totalAmount}}</span></div>
             <br>
-            <p>After signing of this Purchase Agreement <span class="bold_text">("Signing")</span> and immediately
-                afterwards transferring the
+            <p>After signing of this Purchase Agreement and immediately afterwards transferring the
                 ownership of the Participation Certificates on the Transfer Date, the Total Purchase Price will be due.
                 The Buyer shall transfer the Total Purchase Price to the following wallet:
             </p>
@@ -181,15 +184,6 @@
             <br>
             <p><span class="bold_text">ERC 20</span></p>
             <br>
-            <br>
-            <p>OR</p>
-            <br>
-            <br>
-            <p>Traccy CONNECT bank account:</p>
-            <br>
-            <p>Kontoinhaber: <span
-                    class="bold_text">Traccy AG, Chaltenbodenstrasse 6a, 8834 Schindellegi (Feusisberg)</span></p>
-            <p>Kontoinhaber: <span class="bold_text">CH82 0630 0506 2499 0368 8</span></p>
         </div>
         <br>
         <br>
