@@ -123,14 +123,6 @@ export class AuthService {
   }
 
   sendResetPasswordEmail(name: string, email: string, token: string): void {
-    // const transporter = nodemailer.createTransport({
-    //   service: 'gmail',
-    //   auth: {
-    //     user: 'traccy.ag@gmail.com', // Gmail email address
-    //     pass: 'xszsriicflnocxlf', // Gmail password or App Password
-    //   },
-    // });
-
     const transporter = nodemailer.createTransport({
       service: 'Outlook365',
       auth: {
