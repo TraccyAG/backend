@@ -9,7 +9,6 @@ import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
 import { TokenService } from './token/token.service';
 import { LoginUserDto } from './dto/login-user.dto';
-import { randomBytes } from 'crypto';
 import nodemailer from 'nodemailer';
 
 @Injectable()
@@ -123,20 +122,184 @@ export class AuthService {
     }
   }
 
-  sendResetPasswordEmail(email: string, token: string): void {
+  sendResetPasswordEmail(name: string, email: string, token: string): void {
+    // const transporter = nodemailer.createTransport({
+    //   service: 'gmail',
+    //   auth: {
+    //     user: 'traccy.ag@gmail.com', // Gmail email address
+    //     pass: 'xszsriicflnocxlf', // Gmail password or App Password
+    //   },
+    // });
+
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
+      service: 'Outlook365',
       auth: {
-        user: 'traccy.ag@gmail.com', // Gmail email address
-        pass: 'xszsriicflnocxlf', // Gmail password or App Password
+        user: 'info@traccy.ch', // Gmail email address
+        pass: 'bscpzmcnclkbykzc', // Gmail password or App Password
       },
     });
 
+    const resetLink = `${process.env.FE_URL}/reset-password/${token}`;
+
     const mailOptions = {
-      from: 'traccy.ag@gmail.com',
+      from: 'info@traccy.ch',
       to: email,
-      subject: 'Your Password from App Traccy',
-      text: `For change you password go to link: ${process.env.FE_URL}/reset-password/${token}`,
+      subject: 'Password Reset for Your Traccy Account',
+      html: ` 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traccy AG: Thank you for your message</title>
+    <style>
+        body {
+            font-family: Calibri, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #404040;
+        }
+
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 14px;
+            margin: 0;
+        }
+
+        .logo {
+            width: 173px;
+            height: 38px;
+        }
+
+        .footer {
+            font-size: 9pt;
+            color: #8a108c;
+        }
+
+        .footer_contact {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .footer_contact_img {
+            padding: 30px 20px;
+            border-right: 4px solid #8a108c;
+        }
+
+        .footer_contact_credentials {
+            display: flex;
+            flex-direction: column;
+            padding-left: 20px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #404040;
+        }
+
+        .footer_img {
+            width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+<div style="padding: 30px; font-size: 16px">
+    <br>
+    <div>Dear  ${name}</div>
+    <br>
+    <div>
+        We have received a request to reset your password. To ensure your security and confirm that only you have access
+        to your account, you can reset your password using the following link:
+    </div>
+    <br>
+    <a href=${resetLink} target="_blank">${resetLink}</a>
+    <br>
+    <br>
+    <div>
+        If you did not make this request or prefer not to reset your password at this time, please disregard this email,
+        and your account details will remain unchanged.
+    </div>
+    <br>
+    <div>
+        Please note that the link is valid for a limited time to ensure the security of your account. If the link
+        expires, you can request a new password reset link through our website.
+    </div>
+    <br>
+    <div>
+        We recommend choosing a strong and secure password that includes a combination of uppercase and lowercase
+        letters,
+        numbers, and special characters. Avoid using easily guessable passwords such as birth dates or simple words.
+    </div>
+    <br>
+    <div>
+        Ensuring the safety of your data and maintaining the security of your account is our top priority. If you have
+        any
+        further questions or concerns, please do not hesitate to contact our support team.
+    </div>
+    <br>
+    <div>
+        Thank you for your attention and understanding.
+    </div>
+    <br>
+    <div>
+        Best regards
+    </div>
+</div>
+<div class="footer">
+    <div class="footer_contact">
+        <div class="footer_contact_img">
+            <img class="logo" src="https://portal.traccy.io/static/media/logo.5b267d8957c8c641526b.png"
+                 alt="Traccy AG Logo">
+        </div>
+        <div class="footer_contact_credentials">
+            <p style="font-size: 16px; color: black; font-weight: 500">Traccy AG</p>
+            <p style="color: black; font-size: 12px">Support Team</p>
+            <p>
+                <span style="font-size: 12px">phone</span>
+                <span style="color: black; font-size: 12px">+41 43 810 29 51</span>
+                <span style="font-size: 12px">email</span>
+                <a href="mailto:info@traccy.ch" style="font-size: 12px; text-decoration: underline">info@traccy.ch</a>
+                <span style="font-size: 12px">web</span>
+                <a href="http://www.traccy.io/" target="_blank" style="font-size: 12px; text-decoration: underline">www.traccy.io</a>
+            </p>
+            <p>
+                <span style="font-size: 12px">address</span>
+                <span style="font-size: 12px; color: black">Chaltenbodenstrasse 6a, 8834 Schindellegi</span>
+            </p>
+            <p style="display: flex; column-gap: 20px">
+                <a href="https://web.telegram.org/z/#-1897696749">
+                    <img src='https://ivanus.s3.amazonaws.com/traccy/image002.png' alt="logo" class="footer_img"
+                         style="width: 13px; height: 13px">
+                </a>
+                <a href="https://twitter.com/home?lang=de">
+                    <img src='https://ivanus.s3.amazonaws.com/traccy/image003.png' alt="logo" class="footer_img"
+                         style="width: 13px; height: 13px">
+                </a>
+                <a href="https://www.instagram.com/traccy_official/">
+                    <img src='https://ivanus.s3.amazonaws.com/traccy/image004.png' alt="logo" class="footer_img"
+                         style="width: 13px; height: 13px">
+                </a>
+                <a href="https://www.linkedin.com/company/traccy-ag/?viewAsMember=true">
+                    <img src='https://ivanus.s3.amazonaws.com/traccy/image005.png' alt="logo" class="footer_img"
+                         style="width: 13px; height: 13px">
+                </a>
+            </p>
+        </div>
+    </div>
+    <img src='https://ivanus.s3.amazonaws.com/traccy/footer.png' alt="logo" class="footer_img"
+    style="width: 100%; height: 200px"
+    >
+</div>
+</body>
+</html>
+  `,
     };
 
     transporter.sendMail(mailOptions, (error, info) => {
@@ -151,7 +314,7 @@ export class AuthService {
   async updatePassword(token: string, newPassword: string) {
     try {
       const { email } = this.tokenService.verifyToken(token, 'Action');
-      let userByEmail = await this.userService.getUserByEmail(email);
+      const userByEmail = await this.userService.getUserByEmail(email);
       if (!userByEmail) {
         throw new Error('No such user');
       }

@@ -55,7 +55,12 @@ export class AuthController {
       const resetPasswordToken =
         await this.tokenService.generateResetActionToken(email); // Implement your token generation logic
 
-      this.authService.sendResetPasswordEmail(user.email, resetPasswordToken); // Implement your email sending logic
+      const name = user.firstName + ' ' + user.surName;
+      this.authService.sendResetPasswordEmail(
+        name,
+        user.email,
+        resetPasswordToken,
+      ); // Implement your email sending logic
     }
     // Return a success response
     return { message: 'Reset password email sent successfully' };
