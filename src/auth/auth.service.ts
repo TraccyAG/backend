@@ -14,8 +14,8 @@ import nodemailer from 'nodemailer';
 @Injectable()
 export class AuthService {
   constructor(
-    private userService: UserService,
-    private tokenService: TokenService,
+      private userService: UserService,
+      private tokenService: TokenService,
   ) {}
 
   //registration user
@@ -25,8 +25,8 @@ export class AuthService {
 
       if (user) {
         return new HttpException(
-          'user is already exist',
-          HttpStatus.BAD_REQUEST,
+            'user is already exist',
+            HttpStatus.BAD_REQUEST,
         );
       }
       const hashPassword = await bcrypt.hash(data.password, 10);
@@ -48,14 +48,14 @@ export class AuthService {
       const userFromDb = await this._validate(data);
       if (!userFromDb) {
         throw new UnauthorizedException(
-          HttpStatus.UNAUTHORIZED,
-          'wrong email or password',
+            HttpStatus.UNAUTHORIZED,
+            'wrong email or password',
         );
       }
 
       if (userFromDb) {
         const tokenPairFromDb = await this.tokenService.getTokenPairByUserId(
-          userFromDb.id,
+            userFromDb.id,
         );
         if (tokenPairFromDb) {
           await this.tokenService.deleteTokenPair(userFromDb.id);
@@ -71,13 +71,13 @@ export class AuthService {
   async logout(accessToken: string) {
     try {
       const tokenPayload = await this.tokenService.verifyToken(
-        accessToken,
-        'Access',
+          accessToken,
+          'Access',
       );
       if (!tokenPayload) {
         throw new UnauthorizedException(
-          HttpStatus.UNAUTHORIZED,
-          'access token not valid',
+            HttpStatus.UNAUTHORIZED,
+            'access token not valid',
         );
       }
       return this.tokenService.deleteTokenPair(tokenPayload.id);
@@ -91,8 +91,8 @@ export class AuthService {
     try {
       const userFromDb = await this.userService.getUserByEmail(data.email);
       const checkPassword = await bcrypt.compare(
-        data.password,
-        userFromDb.password,
+          data.password,
+          userFromDb.password,
       );
       if (userFromDb && checkPassword) {
         return userFromDb;
@@ -106,11 +106,11 @@ export class AuthService {
   async refresh(refreshToken: string) {
     try {
       const tokenPayload = await this.tokenService.verifyToken(
-        refreshToken,
-        'Refresh',
+          refreshToken,
+          'Refresh',
       );
       const tokenPairByUserId = await this.tokenService.getTokenPairByUserId(
-        tokenPayload.id,
+          tokenPayload.id,
       );
       if (!tokenPayload || refreshToken !== tokenPairByUserId.refreshToken) {
         throw new HttpException('token not valid', 402);
@@ -168,33 +168,6 @@ export class AuthService {
             height: 38px;
         }
 
-        .footer {
-            font-size: 9pt;
-            color: #8a108c;
-        }
-
-        .footer_contact {
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .footer_contact_img {
-            padding: 30px 20px;
-            border-right: 4px solid #8a108c;
-        }
-
-        .footer_contact_credentials {
-            display: flex;
-            flex-direction: column;
-            padding-left: 20px;
-        }
-
-        .footer a {
-            text-decoration: none;
-            color: #404040;
-        }
-
         .footer_img {
             width: 100%;
             margin-top: 20px;
@@ -204,9 +177,9 @@ export class AuthService {
 <body>
 <div style="padding: 30px; font-size: 16px">
     <br>
-    <div>Dear  ${name}</div>
+    <div style="color: black">Dear  ${name}</div>
     <br>
-    <div>
+    <div style="color: black">
         We have received a request to reset your password. To ensure your security and confirm that only you have access
         to your account, you can reset your password using the following link:
     </div>
@@ -214,58 +187,62 @@ export class AuthService {
     <a href=${resetLink} target="_blank">${resetLink}</a>
     <br>
     <br>
-    <div>
+    <div style="color: black">
         If you did not make this request or prefer not to reset your password at this time, please disregard this email,
         and your account details will remain unchanged.
     </div>
     <br>
-    <div>
+    <div style="color: black">
         Please note that the link is valid for a limited time to ensure the security of your account. If the link
         expires, you can request a new password reset link through our website.
     </div>
     <br>
-    <div>
+    <div style="color: black">
         We recommend choosing a strong and secure password that includes a combination of uppercase and lowercase
         letters,
         numbers, and special characters. Avoid using easily guessable passwords such as birth dates or simple words.
     </div>
     <br>
-    <div>
+    <div style="color: black">
         Ensuring the safety of your data and maintaining the security of your account is our top priority. If you have
         any
         further questions or concerns, please do not hesitate to contact our support team.
     </div>
     <br>
-    <div>
+    <div style="color: black">
         Thank you for your attention and understanding.
     </div>
     <br>
-    <div>
+    <div style="color: black">
         Best regards
     </div>
 </div>
-<div class="footer">
-    <div class="footer_contact">
-        <div class="footer_contact_img">
+<div>
+    <div style="display: flex;
+            align-items: center;
+            justify-content: flex-start;">
+        <div style=
+        "padding: 30px 20px;
+         border-right: 4px solid #8a108c;">
             <img class="logo" src="https://portal.traccy.io/static/media/logo.5b267d8957c8c641526b.png"
                  alt="Traccy AG Logo">
         </div>
-        <div class="footer_contact_credentials">
-            <p style="font-size: 16px; color: black; font-weight: 500">Traccy AG</p>
-            <p style="color: black; font-size: 12px">Support Team</p>
-            <p>
-                <span style="font-size: 12px">phone</span>
+        <div style="padding-left: 20px;"> 
+            <div style="font-size: 16px; color: black; font-weight: 500">Traccy AG</div>
+            <div style="color: black; font-size: 12px">Support Team</div>
+            <div>
+                <span style="font-size: 12px; color: #8a108c;">phone</span>
                 <span style="color: black; font-size: 12px">+41 43 810 29 51</span>
-                <span style="font-size: 12px">email</span>
+                <span style="font-size: 12px; color: #8a108c;">email</span>
                 <a href="mailto:info@traccy.ch" style="font-size: 12px; text-decoration: underline">info@traccy.ch</a>
-                <span style="font-size: 12px">web</span>
+                <span style="font-size: 12px; color: #8a108c;">web</span>
                 <a href="http://www.traccy.io/" target="_blank" style="font-size: 12px; text-decoration: underline">www.traccy.io</a>
-            </p>
-            <p>
-                <span style="font-size: 12px">address</span>
+            </div>
+            <div>
+                <span style="font-size: 12px; color: #8a108c;">address</span>
                 <span style="font-size: 12px; color: black">Chaltenbodenstrasse 6a, 8834 Schindellegi</span>
-            </p>
-            <p style="display: flex; column-gap: 20px">
+            </div>
+            <div style="display: flex; column-gap: 20px">
                 <a href="https://web.telegram.org/z/#-1897696749">
                     <img src='https://ivanus.s3.amazonaws.com/traccy/image002.png' alt="logo" class="footer_img"
                          style="width: 13px; height: 13px">
@@ -282,7 +259,7 @@ export class AuthService {
                     <img src='https://ivanus.s3.amazonaws.com/traccy/image005.png' alt="logo" class="footer_img"
                          style="width: 13px; height: 13px">
                 </a>
-            </p>
+            </div>
         </div>
     </div>
     <img src='https://ivanus.s3.amazonaws.com/traccy/footer.png' alt="logo" class="footer_img"
