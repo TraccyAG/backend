@@ -3,7 +3,10 @@ import {
   Controller,
   Delete,
   Get,
+  HttpException,
+  HttpStatus,
   Param,
+  Patch,
   Post,
   UploadedFile,
   UseInterceptors,
@@ -12,6 +15,7 @@ import { UserService } from './user.service';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadedMulterFileI } from '../core';
 import { DoSpacesService } from '../core/s3.service';
+import { User } from '@prisma/client';
 
 @Controller('user')
 export class UserController {
@@ -33,6 +37,21 @@ export class UserController {
   ) {
     const url = await this.doSpacesService.uploadFile(file);
     return this.userService.createAgreement(userId, url as string);
+  }
+
+  @Patch('update/:id')
+  public async updateUser(
+    @Param('id') id: string,
+    @Body() userData: Partial<User>,
+  ) {
+    const userByEmail = await this.userService.getUserByEmail(userData.email);
+    const userById = await this.userService.getUserById(id);
+    if (!userById || !userByEmail || userByEmail.id !== userById.id)
+      throw new HttpException(
+        'User cannot be identified',
+        HttpStatus.NOT_FOUND,
+      );
+    return this.userService.updateUser(userByEmail.email, userData);
   }
 
   @Delete('/delete')

@@ -14,8 +14,8 @@ import nodemailer from 'nodemailer';
 @Injectable()
 export class AuthService {
   constructor(
-      private userService: UserService,
-      private tokenService: TokenService,
+    private userService: UserService,
+    private tokenService: TokenService,
   ) {}
 
   //registration user
@@ -25,8 +25,8 @@ export class AuthService {
 
       if (user) {
         return new HttpException(
-            'user is already exist',
-            HttpStatus.BAD_REQUEST,
+          'user is already exist',
+          HttpStatus.BAD_REQUEST,
         );
       }
       const hashPassword = await bcrypt.hash(data.password, 10);
@@ -48,14 +48,14 @@ export class AuthService {
       const userFromDb = await this._validate(data);
       if (!userFromDb) {
         throw new UnauthorizedException(
-            HttpStatus.UNAUTHORIZED,
-            'wrong email or password',
+          HttpStatus.UNAUTHORIZED,
+          'wrong email or password',
         );
       }
 
       if (userFromDb) {
         const tokenPairFromDb = await this.tokenService.getTokenPairByUserId(
-            userFromDb.id,
+          userFromDb.id,
         );
         if (tokenPairFromDb) {
           await this.tokenService.deleteTokenPair(userFromDb.id);
@@ -71,13 +71,13 @@ export class AuthService {
   async logout(accessToken: string) {
     try {
       const tokenPayload = await this.tokenService.verifyToken(
-          accessToken,
-          'Access',
+        accessToken,
+        'Access',
       );
       if (!tokenPayload) {
         throw new UnauthorizedException(
-            HttpStatus.UNAUTHORIZED,
-            'access token not valid',
+          HttpStatus.UNAUTHORIZED,
+          'access token not valid',
         );
       }
       return this.tokenService.deleteTokenPair(tokenPayload.id);
@@ -91,8 +91,8 @@ export class AuthService {
     try {
       const userFromDb = await this.userService.getUserByEmail(data.email);
       const checkPassword = await bcrypt.compare(
-          data.password,
-          userFromDb.password,
+        data.password,
+        userFromDb.password,
       );
       if (userFromDb && checkPassword) {
         return userFromDb;
@@ -106,11 +106,11 @@ export class AuthService {
   async refresh(refreshToken: string) {
     try {
       const tokenPayload = await this.tokenService.verifyToken(
-          refreshToken,
-          'Refresh',
+        refreshToken,
+        'Refresh',
       );
       const tokenPairByUserId = await this.tokenService.getTokenPairByUserId(
-          tokenPayload.id,
+        tokenPayload.id,
       );
       if (!tokenPayload || refreshToken !== tokenPairByUserId.refreshToken) {
         throw new HttpException('token not valid', 402);
