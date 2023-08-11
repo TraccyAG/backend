@@ -126,15 +126,15 @@ export class AuthService {
     const transporter = nodemailer.createTransport({
       service: 'Outlook365',
       auth: {
-        user: 'info@traccy.ch', // Gmail email address
-        pass: 'bscpzmcnclkbykzc', // Gmail password or App Password
+        user: 'noreply@traccy.ch', // Gmail email address
+        pass: 'xhkhtpbrbynyxqzw', // Gmail password or App Password
       },
     });
 
     const resetLink = `${process.env.FE_URL}/reset-password/${token}`;
 
     const mailOptions = {
-      from: 'info@traccy.ch',
+      from: 'noreply@traccy.ch',
       to: email,
       subject: 'Password Reset for Your Traccy Account',
       html: ` 
