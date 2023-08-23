@@ -12,6 +12,7 @@ export class DocumentsService {
       __dirname,
       '../public/template/template.html',
     );
+    console.log(templatePath);
     const {
       firstName,
       surName,
